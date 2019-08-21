@@ -67,17 +67,59 @@ class Btree {
 	}
 	removeNode (){
 
+
 	}
 	findValue(){
 
 	}
-	findHeight(){
+	isBalanced(){
+		return (this.findMinHeight() <= (this.findMaxHeight() - 1));
+	}
+	findMinHeight(){
+		// recursive function
+	}
+	findHeight(node = this.root){
+		if (node === null){
+			return -1
+		};
+		let left = this.findMinHeight(node.left);
+		let right = this.findMinHeight(node.right);
+		if (left < right){
+			return left+1;
+		} else {
+			return right+1;
+		}		
+	}
+	pushOrderNodes(){
+		// levelOrder breadth first search
+		let levelOrderArray = [];
+		const nodePusher = (num) =>{
+			levelOrderArray.push(num);
+		}
+		console.log(levelOrderArray);
+	}
+	traverseBreadthFirst(callback){
+		let queue = [this];
+		while (queue.length){
+			let currentNode = queue.shift();
+			if (currentNode.left){
+				queue.push(currentNode.left)
+			}
+		}
 
 	}
-	findDiameter(){
 
-	}
 }
+
+// in a depth first search a tree is explored as deeply as possible
+		// inOrder
+			// left most node and end at the right most node
+		// preOrder
+			// explore the root nodes before the leaves
+		// postOrder
+			// explores the leaf nodes on each branch before the roots 
+
+
 
 const firstTree = new Btree();
 
@@ -86,9 +128,14 @@ firstTree.addNode(6);
 firstTree.addNode(9);
 firstTree.addNode(4);
 firstTree.addNode(11);
-firstTree.addNode(11);
+// firstTree.addNode(11);
 firstTree.addNode(30);
 firstTree.addNode(40);
+firstTree.addNode(39);
+firstTree.addNode(32);
 
 console.log(firstTree)
+
+firstTree.traverseBreadthFirst(firstTree.pushOrderNodes);
+
 // console.log(firstTree.root, '<-- root of firstTree');

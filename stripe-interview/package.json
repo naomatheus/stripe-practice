@@ -1,0 +1,15 @@
+{
+  "name": "stripe-interview",
+  "version": "1.0.0",
+  "description": "stripe interview 08 20 19",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "matt robinson",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mathjs": "^6.1.0"
+  }
+}
