@@ -60,54 +60,46 @@ const tableMultiRow = [
 	{"a":9, "b":8}
 ]
 
-const findMinRow = (table) => {
-	let row;
-	let min = 0;
+const findMinMultiRow = (table) => {
+	let minsOfAllRows = [];
+	const finalMin = 0;
+	
 	table.map((ele, indx) => {
 		// for a multi-row/multi-column table, I use map to perform an operation on all key:value pairs, regardless of # of rows/columns
 		
-		// min will hold a new minimum when found
-		let value = 0;
-		let newMin = 0;
-		console.log(ele, '<-- ele');
-		console.log(indx, '<-- indx');
+		const tableValues = Object.values(ele)
+		// declare the tables' values
 
-		for (indx in ele){
-			const key = ele;
-			const val = indx;
-			const value = key[val]
-			// obtain values from all objects in array table
-
-			// // console.log(value, '<-- value');
-
-			// while (key[val] < value){
-
-			// 	newMin = key[val]
-			// 	console.log(newMin, '<-- newMin');
-			// }
-			// create and assign newMin within the condition or within the for in loop
-
-			// while (i !== 0){
-			// 	// compare ele[i], assign it to max each time
-			// 	let currentMin = 0;
-			// 	currentMin = ele[i]
-			// 	// if max is lower/higher than currently is
-			// 	newMin = currentMin;
-			// 	if (newMin < currentMin){
-			// 		newMin = currentMin;	
-			// 	}
-				
-			// 	i--
-			// }
-			// return newMin
-		} 	
+		minsOfAllRows.push(Math.min(...tableValues));
+		// push minimum of all rows to minsOfAllRows array
 	})
-	
+
+	const cumulativeMinimum = Math.min(...minsOfAllRows);
+	// console.log(cumulativeMinimum, '<-- cumulativeMinimum');
+	// find the minimum overall
+	return cumulativeMinimum
+
 	
 }
 
-console.log(findMinRow(tableMultiRow));
 
+console.log(findMinMultiRow(tableMultiRow));
+
+const findRow = (table, minimum, element) => {
+	
+	for (let i = 0; i < table.length; i++){
+		
+		if (Object.values(table) === minimum){
+			// discover the location of the minimum and return that row
+			// console.log(table[i]);
+			return table[i]
+		}
+	}	
+
+	return 0
+}
+
+console.log(findRow(tableMultiRow));
 
 // columns a b c d 
 // 		1 3 4 7
