@@ -89,9 +89,11 @@ const findRow = (table, minimum, element) => {
 	
 	for (let i = 0; i < table.length; i++){
 		
-		if (Object.values(table) === minimum){
+		tableArray = Object.values(table[i]);
+
+		if (Math.min(...tableArray) === minimum){
 			// discover the location of the minimum and return that row
-			// console.log(table[i]);
+			
 			return table[i]
 		}
 	}	
@@ -99,7 +101,7 @@ const findRow = (table, minimum, element) => {
 	return 0
 }
 
-console.log(findRow(tableMultiRow));
+console.log(findRow(tableMultiRow, findMinMultiRow(tableMultiRow)));
 
 // columns a b c d 
 // 		1 3 4 7
