@@ -75,17 +75,14 @@ const findMinMultiRow = (table) => {
 	})
 
 	const cumulativeMinimum = Math.min(...minsOfAllRows);
-	// console.log(cumulativeMinimum, '<-- cumulativeMinimum');
 	// find the minimum overall
 	return cumulativeMinimum
-
-	
 }
 
 
 console.log(findMinMultiRow(tableMultiRow));
 
-const findRow = (table, minimum, element) => {
+const findRow = (table, minimum) => {
 	
 	for (let i = 0; i < table.length; i++){
 		
